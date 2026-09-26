@@ -15,6 +15,7 @@ A clean-room Route 53 inspired DNS management console built with Next.js, TypeSc
 - JSON and BIND zone file export from the console, and BIND zone file import (upload a `.zone`/`.txt` file to a hosted zone; invalid lines are reported and skipped without failing the whole import)
 - Dark mode toggle in the top navigation bar, persisted per browser
 - Keyboard shortcuts: `Esc` closes the open modal, `n` opens "Create hosted zone" / "Create record" for the current page
+- Bulk operations: select multiple hosted zones or records with row checkboxes and delete them in one confirmed action
 - Traffic Policies, Health Checks, Resolver, and Profiles coming-soon routes
 - FastAPI Swagger UI at `/docs`, OpenAPI JSON at `/openapi.json`, and `/health`
 
@@ -69,6 +70,8 @@ Open http://localhost:3000. Demo login: `demo@route53.local` / `route53-demo`. T
 | PATCH, DELETE      | `/api/records/{record_id}`                      | Update or remove a record                                                                     |
 | GET                | `/api/zones/{zone_id}/export?format=json\|bind` | Export zone and records                                                                       |
 | POST               | `/api/zones/{zone_id}/import`                   | Import records from BIND zone file text (`{"content": "..."}`); returns `{imported, skipped}` |
+| POST               | `/api/zones/bulk-delete`                        | Delete multiple hosted zones (`{"ids": [...]}`); returns `{deleted, not_found}`               |
+| POST               | `/api/records/bulk-delete`                      | Delete multiple DNS records (`{"ids": [...]}`); returns `{deleted, not_found}`                |
 | GET                | `/health`                                       | Liveness check                                                                                |
 
 List endpoints accept `search`, `page` (one-based), and `page_size` (1–100); records also accept `record_type`. List responses have `items`, `total`, `page`, and `page_size`. Invalid input is returned as HTTP 422; missing resources as 404; duplicate zones and conflicting CNAME data as 409. `/api/zones/{zone_id}/export?format=json` returns JSON; `format=bind` returns a BIND zone file.

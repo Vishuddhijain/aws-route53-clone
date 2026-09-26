@@ -277,3 +277,7 @@ td a, .link, .table-link { color: var(--accent); text-decoration: none; font-wei
   .subbar span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .account-button span { display: none; }
 }
+
+.bulk-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;margin:0 0 10px;background:var(--surface-alt);border:1px solid var(--line);border-radius:6px;font-size:13px;font-weight:600}
+.select-col{width:36px;text-align:center}
+.row-selected{background:color-mix(in srgb, var(--blue) 8%, transparent)}

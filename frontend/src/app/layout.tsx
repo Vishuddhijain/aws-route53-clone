@@ -1,9 +1,3 @@
-// import type { Metadata } from "next";
-// import "./globals.css";
-// export const metadata: Metadata = { title: "Amazon Route 53 | AWS Console", description: "Manage hosted zones and DNS records" };
-// export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="en"><body>{children}</body></html>; }
-
-
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
@@ -33,12 +27,7 @@ const themeInitScript = `
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    // suppressHydrationWarning is required here because the theme-init script
-    // below sets data-theme on <html> directly (before React hydrates), so
-    // the attribute React sees on mount won't match what it rendered on the
-    // server. React only skips the mismatch check for this one element's
-    // attributes — it does not suppress warnings for anything inside <body>.
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body>
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
