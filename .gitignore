@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+dist/
+.venv/
+__pycache__/
+*.py[cod]
+*.db
+.env
+.env.local
+coverage/
+playwright-report/
+test-results/
+backend/playwright-e2e.db
